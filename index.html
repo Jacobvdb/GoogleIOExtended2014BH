@@ -1,0 +1,548 @@
+<html lang="pt">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style>
+	<style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style>
+	<link type="text/css" rel="stylesheet" href="./files/css">
+	<style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style>
+	<style type="text/css">.gm-style div,.gm-style span,.gm-style label,.gm-style a{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400}.gm-style div,.gm-style span,.gm-style label{text-decoration:none}.gm-style a,.gm-style label{display:inline}.gm-style div{display:block}.gm-style img{border:0;padding:0;margin:0}</style>
+	<meta charset="utf-8">
+	<title>Apps Script - 30 de janeiro de 2014</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link href="./files/bootstrap.css" rel="stylesheet">
+	<link href="./files/bootstrap-responsive.css" rel="stylesheet">
+	<style>
+         /* GLOBAL STYLES
+         -------------------------------------------------- */
+         /* Padding below the footer and lighter body text */
+         body {
+         	padding-bottom: 40px;
+         	color: #5a5a5a;
+         }
+         /* CUSTOMIZE THE NAVBAR
+         -------------------------------------------------- */
+         /* Special class on .container surrounding .navbar, used for positioning it into place. */
+         .navbar-wrapper {
+         	position: relative;
+         	z-index: 10;
+         	margin-top: 20px;
+         	margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+         }
+         /* Remove border and change up box shadow for more contrast */
+         .navbar .navbar-inner {
+         	border: 0;
+         	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         	-moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         	box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         }
+         /* Downsize the brand/project name a bit */
+         .navbar .brand {
+         	padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+         	font-size: 16px;
+         	font-weight: bold;
+         	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+         }
+         /* Navbar links: increase padding for taller navbar */
+         .navbar .nav > li > a {
+         	padding: 15px 20px;
+         }
+         /* Offset the responsive button for proper vertical alignment */
+         .navbar .btn-navbar {
+         	margin-top: 10px;
+         }
+         /* CUSTOMIZE THE NAVBAR
+         -------------------------------------------------- */
+         /* Carousel base class */
+         .carousel {
+         	margin-bottom: 60px;
+         }
+         .carousel .container {
+         	position: absolute;
+         	right: 0;
+         	bottom: 0;
+         	left: 0;
+         }
+         .carousel-control {
+         	background-color: transparent;
+         	border: 0;
+         	font-size: 120px;
+         	margin-top: 0;
+         	text-shadow: 0 1px 1px rgba(0,0,0,.4);
+         }
+         .carousel .item {
+         	height: 500px;
+         }
+         .carousel img {
+         	min-width: 100%;
+         	height: 500px;
+         }
+         .carousel-caption {
+         	background-color: transparent;
+         	position: static;
+         	max-width: 600px;
+         	padding: 0 20px;
+         	margin-bottom: 100px;
+         }
+         .carousel-caption h1,
+         .carousel-caption .lead {
+         	margin: 0;
+         	line-height: 1.25;
+         	color: #fff;
+         	text-shadow: 0 1px 1px rgba(0,0,0,.4);
+         }
+         .carousel-caption .btn {
+         	margin-top: 10px;
+         }
+         /* MARKETING CONTENT
+         -------------------------------------------------- */
+         /* Center align the text within the three columns below the carousel */
+         .marketing .span4  {
+         	text-align: center;
+         }
+         .marketing h2 {
+         	font-weight: normal;
+         }
+         .marketing .span4 p {
+         	margin-left: 10px;
+         	margin-right: 10px;
+         }
+         /* Featurettes
+         ------------------------- */
+         .featurette-divider {
+         margin: 60px 0; /* Space out the Bootstrap 
+         <hr>
+         more */
+     }
+     .featurette {
+     	padding-top: 60px; /* Vertically center images part 1: add padding above and below text. */
+     	overflow: hidden; /* Vertically center images part 2: clear their floats. */
+     }
+     .featurette-image {
+     	margin-top: -60px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+     }
+     /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+     .featurette-image.pull-left {
+     	margin-right: 40px;
+     }
+     .featurette-image.pull-right {
+     	margin-left: 40px;
+     }
+     /* Thin out the marketing headings */
+     .featurette-heading {
+     	font-size: 50px;
+     	font-weight: 300;
+     	line-height: 1;
+     	letter-spacing: -1px;
+     }
+         /* RESPONSIVE CSS
+         -------------------------------------------------- */
+         @media (max-width: 979px) {
+         	.container.navbar-wrapper {
+         		margin-bottom: 0;
+         		width: auto;
+         	}
+         	.navbar-inner {
+         		border-radius: 0;
+         		margin: -20px 0;
+         	}
+         	.carousel .item {
+         		height: 500px;
+         	}
+         	.carousel img {
+         		width: auto;
+         		height: 500px;
+         	}
+         	.featurette {
+         		height: auto;
+         		padding: 0;
+         	}
+         	.featurette-image.pull-left,
+         	.featurette-image.pull-right {
+         		display: block;
+         		float: none;
+         		max-width: 40%;
+         		margin: 0 auto 20px;
+         	}
+         }
+         @media (max-width: 767px) {
+         	.navbar-inner {
+         		margin: -20px;
+         	}
+         	.carousel {
+         		margin-left: -20px;
+         		margin-right: -20px;
+         	}
+         	.carousel .container {
+         	}
+         	.carousel .item {
+         		height: 300px;
+         	}
+         	.carousel img {
+         		height: 300px;
+         	}
+         	.carousel-caption {
+         		width: 65%;
+         		padding: 0 70px;
+         		margin-bottom: 40px;
+         	}
+         	.carousel-caption h1 {
+         		font-size: 30px;
+         	}
+         	.carousel-caption .lead,
+         	.carousel-caption .btn {
+         		font-size: 18px;
+         	}
+         	.marketing .span4 + .span4 {
+         		margin-top: 40px;
+         	}
+         	.featurette-heading {
+         		font-size: 30px;
+         	}
+         	.featurette .lead {
+         		font-size: 18px;
+         		line-height: 1.5;
+         	}
+         	header {
+         		height: 200px;
+         	}
+         	.logo {
+         		left: 0;
+         		position: absolute;
+         		top: -40px;
+         		width: 100%;
+         	}
+         }
+         header {
+         	position: relative;
+         	z-index: 10;
+         	margin-top: 50px;
+         	margin-bottom: -150px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+         }
+         #mapa {
+         	height: 400px;
+         }
+         table td.center, table thead th { text-align: center; }
+         @media (max-width:400px){
+         	header {
+         		height: 200px;
+         	}
+         	.logo {
+         		left: 0;
+         		position: absolute;
+         		top: -40px;
+         		width: 100%;
+         	}
+         	.carousel .item {
+         		height: 400px;
+         	}
+         	.carousel img {
+         		height: 400px;
+         	}
+         	#mapa {
+         		width: 90%;
+         	}
+         }
+         .center {
+         	text-align: center;
+         }
+         #palestrantes img {
+         	width: 80px;
+         /*
+         -webkit-border-radius: 25px;
+         -moz-border-radius: 25px;
+         border-radius: 25px;
+         */
+     }
+     .areas img {
+     	width: 200px;
+     }
+     .programacao thead td {
+     	font-weight: bold;
+     }
+     .programacao table td {
+     	text-align: center;
+     	vertical-align: middle;
+     }
+     .inverte {
+     	background: rgb(0, 68, 122);
+     	color: #fff;
+     }
+ </style>
+ <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <!-- Fav and touch icons -->
+      <link rel="shortcut icon" href="./files/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://devfest.com.br/assets/ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://devfest.com.br/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://devfest.com.br/assets/ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="http://devfest.com.br/assets/ico/apple-touch-icon-57-precomposed.png">
+      <script type="text/javascript" charset="UTF-8" src="./files/maps.js"></script>
+      <script type="text/javascript" charset="UTF-8" src="./files/onion.js"></script>
+      <script type="text/javascript" charset="UTF-8" src="./files/controls.js"></script>
+      <script type="text/javascript" charset="UTF-8" src="./files/stats.js"></script>
+  </head>
+  <body><!--comment -->
+  	<a name="topo"></a>
+  		<div class="container">
+  			<header>            
+  				<!--<embed src="DevFestFiles/GDG_Belo Horizonte.svg" type="image/svg+xml" class="logo">-->
+  			</header>
+  		</div>
+  		<!--<a href="#conteudo" name="topo"/>-->
+      <!-- Carousel
+      ================================================== -->
+      <div id="myCarousel" class="carousel slide">
+      	<div class="carousel-inner">
+      		<div class="item active">
+      			<img src="./files/minasgerais141sg.jpg" alt="">
+      			<div class="container">
+      				<div class="carousel-caption">
+      					<h1>A magia de Google Apps</h1>
+      					<p class="lead">Descubra todas as possibilidades de Apps Script.</p>
+      					<p>&nbsp;</p>                     
+      					<!--<a class="btn btn-large btn-primary" href="#conteudo" >Download dos Materiais</a>&nbsp;-->
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+      <!-- /.carousel -->
+      <div class="container programacao">
+      	<div class="row areas">
+      		<div class="span12 center">
+      			<img src="./files/Gmail-Logo.png" alt="" rel="popover" data-original-title="Gmail" data-content="A facilidade e simplicidade do Gmail, disponível em todos os seus dispositivos. Caixa de entrada do Gmail ajuda você a manter-se organizado, classificando seu e-mail por tipo. Além disso, você pode usar o video chat ...">
+      			<img src="./files/calendar.png" alt="" rel="popover" data-original-title="Calendar" data-content="Com calendário on-line gratuito do Google, é fácil acompanhar os eventos importantes da vida em um só lugar.">
+      			<img src="./files/sites-512.png" alt="" rel="popover" data-original-title="Google Sites" data-content="Pensando em criar um website? O Google Sites é uma maneira fácil e gratuito para criar e compartilhar páginas da web.">
+      			<img src="./files/docs.png" alt="" rel="popover" data-original-title="Google Docs" data-content="Criar e compartilhar o seu trabalho on-line e acessar seus documentos de qualquer lugar. Gerenciar documentos, planilhas, apresentações, pesquisas e muito mais, tudo em um ...">
+      			<img src="./files/google_drive_icon_.png" alt="" rel="popover" data-original-title="Google Drive" data-content="Google Drive permite armazenar até 15GB de suas coisas de graça, acessá-los de qualquer lugar, e colaborar com os outros.">
+      		</div>
+      		<div style="">
+      			
+      			Gostaria de ter acesso à toda magia do Google Apps - particularmente Calendário, Docs, Drive, Formulários, Gmail, Sheets e sites? Google Apps Script é provavelmente a resposta. Vários funcionários dos escritórios do Google em Mountain View e NYC explicarão os conceitos básicos do Apps Script e vão demonstrar alguns scripts úteis. Depois, eles vão supervisionar um exercício de programação ao vivo (em JavaScript), no qual você vai aprender como adicionar um menu personalizado e barra lateral para o Google Docs, que usa o Google Translate para converter texto para o idioma de sua escolha.
+      		</div>
+      	</div>
+      	
+      	<div class="featurette">
+      		<h2 class="featurette-heading"><span class="muted">Confira nossa </span> programação</h2>
+      		<p class="lead">&nbsp;</p>
+      		<ul class="nav nav-tabs" id="tabProgramacao">
+      			<li class="active"><a href="http://devfest.com.br/#programacao">Programação</a></li>
+               <!--
+                  <li><a href="#palestrantes">Palestrantes</a></li>
+              -->
+          </ul>
+          <!--<a name="conteudo"/>-->
+          <div class="tab-content">
+          	<div class="tab-pane active" id="programacao">
+          		<table class="table">
+          			<thead>
+          				<tr>
+          					<td style="width: 7%;">Horário</td>
+          					<td>Atividade</td>                        
+          				</tr>
+          			</thead>
+          			<tbody>
+          				<tr class="inverte">
+          					<td>19:30</td>
+          					<td>CREDENCIAMENTO NO HALL</td>
+          				</tr>
+          				<tr>
+          					<td>20:00</td>
+          					<td><b>INTRODUÇÂO A GOOGLE APPS SCRIPT</b></td>
+          				</tr>
+          				
+          				<tr>
+          					<td>20:15</td>
+          					<td > <a href="">Criando Aplicativos com Google Apps Script</a> - <small><a href="https://plus.google.com/117303226705499309115"  target="_blank">Dan Lazin</a></small> <span class="label label-success">Technical Writer Apps Script</span></td>
+          				</tr>
+          				<tr>
+          					<td>20:30</td>
+          					
+          				</tr>
+          				<tr>
+          					<td>20:45</td>
+          				</tr>
+          				<tr class="inverte">
+          					<td>21:00</td>
+          					<td colspan="6">INTERVALO</td>
+          				</tr>
+          				<tr>
+          					<td>21:15</td>
+          					<td > <b>CODE LAB GOOGLE APPS SCRIPT<b> </td>
+          					
+          				</tr>
+          				<tr>
+          					<td>21:30</td>
+          					<td > <a href="">Google Docs Side bar & Translate</a> - <small> <a href="https://plus.google.com/+KalyanReddyGoogle" target="_blank" >Kalyan Reddy</a></small> <span class="label label-warning">Developer Programs Engineer</span></td>
+          				</tr>
+          				<tr>
+          					<td>21:45</td>
+          				</tr>
+          				<tr>
+          					<td>22:00</td>
+          				</tr>
+          				
+          				<tr class="inverte">
+          					<td>22:15</td>
+          					<td colspan="6">ENCERRAMENTO e sorteios</td>
+          				</tr>
+          				
+                        <!--<tr class="inverte">
+                           <td>22:00</td>
+                           <td colspan="6">até 2014!</td>
+                       </tr>-->
+                   </tbody>
+               </table>
+               <small><strong>Programação sujeita a alterações.</strong> </small><br>
+               <!--<small>Atenção: existem apenas 100 vagas, inscreva já e garanta a sua.</small>-->
+               
+
+           </div>
+           <div class="tab-pane" id="palestrantes">
+           	<p class="lead"></p>                 
+           </div>
+       </div>
+   </div>
+</div>
+<div class="container">
+
+	<hr class="featurette-divider">
+	<div class="row">
+		<div class="span8">
+			<div class="featurette">
+				<h2 class="featurette-heading">Local e outras informações</h2>
+				<p class="lead">O evento ocorre no Escritorio da Google em Belo Horizonte, na<br> <a href="https://www.google.com/maps/preview/place//@-19.9294021,-43.9407646,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x655eb6b9879f3dcd" target="_blank">Av. Bias Fortes, 382 - Lourdes, Belo Horizonte - MG, 30170-010, Brasil</p></a>
+				<p>&nbsp;</p>
+				<p class="lead">O credenciamento começara as 19:30 no hall do predio. <br>
+					Leve <strong>documento com foto</strong> (RG ou Habilitação) para entrada.<br>
+					Traga <strong>seu Notebook com a bateria carregada</strong> para realizar o codelab.
+				</p>
+				Além disso, se você é novo para o Google Apps Script, familiarize-se com a <a href="https://developers.google.com/apps-script/"> documentação</a> e experimentá-lo. <br><strong>É super fácil de começar!</strong><br><br>
+
+			</div>
+			<div class="span6" id="mapa" style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden; -webkit-transform: translateZ(0);">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3750.8813986712566!2d-43.9407646!3d-19.9294021!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x655eb6b9879f3dcd!2s!5e0!3m2!1sen!2s!4v1390488687178" width="600" height="450" frameborder="0" style="border:0"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=pt&amp;geocode=&amp;q=Rua+Pedro+Gabriel+de+Lima,+20,+Jardim+Arizona,Sete+Lagoas+,+Minas+Gerais&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=34.671324,79.013672&amp;t=h&amp;ie=UTF8&amp;hq=Rua+Pedro+Gabriel+de+Lima,+20,+Jardim+Arizona,Sete+Lagoas+,+Minas+Gerais&amp;hnear=&amp;radius=15000&amp;ll=-19.458863,-44.259802&amp;spn=0.080612,0.154324&amp;z=13&amp;iwloc=A&amp;cid=8880381547693737298" style="color:#0000FF;text-align:left">Ver mapa maior</a></small>
+			</div>
+		</div>
+		<hr class="featurette-divider">
+		<div class="featurette">
+			<h2 class="featurette-heading">Não perca essa oportunidade!</h2>
+			<p class="lead">Evento Organizado pelo Google!</p>
+			<a class="btn btn-large btn-primary" href="https://docs.google.com/forms/d/16B9MULa62OfE5YMSwVUx5AtXiyevc4rDzH0HnTUNj4I/viewform" target="_blank">Faça sua inscrição</a>&nbsp;
+
+
+			<div class="follow" style="margin-top:70px">
+				<h2 class="featurette-heading">Siga-nos</h2>
+				<p class="lead">Nossos canais.</p>
+				<a href="https://plus.google.com/u/3/b/100517144772812557896/100517144772812557896/posts" target="_blank">
+					<img src="files/google-plus60.png" height="60" width="60" rel="popover"   data-content="Google +" > 
+				</a>
+				<a href="https://plus.google.com/u/0/communities/112427657265582891145"  target="_blank">
+					<img src="files/gdg.png" height="60" width="60" rel="popover"   data-content="GDG Belo Horizonte" > 
+				</a>
+			</div>
+
+		</div>
+		<hr class="featurette-divider" style="margin-bottom: 30px;">
+		<!-- /END THE FEATURETTES -->
+		<div class="row">
+			<div class="span12" style="margin-bottom: 100px;"><br>
+				<h2 class="featurette-heading">Apoio</h2>
+				<div class="row" style="padding-bottom: 50px;">
+
+					<div class="span4">
+						<a href="http://google.com/" target="_blank"><img src="./files/google.png" alt="Google" width="130" style="margin: 30px 0;"></a>
+					</div>
+
+					<div class="span4">
+						<a href="http://bh.gtugs.org/" target="_blank">
+							<img src="./files/gdg_bh_00.png" alt="GDG BH" width="130" style="margin: 40px 0;margin-top:7px">
+						</a>
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+		<!-- FOOTER -->
+		<footer>
+			<p class="pull-right"><a href="#topo">Voltar para o topo</a></p>
+			<div>
+				<p>Este evento é organizado pelo Google em conjunto com <a href="http://bh.gtugs.org" rel="tooltip" data-placement="top" data-original-title="Google Developer Groups">GDG BH</a>: </p>
+				<ul>
+					<li><b>Google:</b> 
+						<a href="https://plus.google.com/+KalyanReddyGoogle" rel="tooltip" data-placement="top" data-original-title="Kalyan Reddy on G+"target="_blank">Kalyan Reddy</a>,
+						<a href="https://plus.google.com/118252107117126384620" rel="tooltip" data-placement="top" data-original-title="Carrie Rowe on G+" target="_blank">Carrie Rowe</a>, 
+						<a href="https://plus.google.com/107009703025820893167" rel="tooltip" data-placement="top" data-original-title="John Yandziak on G+" target="_blank">John Yandziak</a> e
+						<a href="https://plus.google.com/117303226705499309115" rel="tooltip" data-placement="top" data-original-title="Dan Lazin on G+" target="_blank">Dan Lazin</a>
+					</li>                  
+					<li><b>GDG Belo Horizonte:</b> 
+						<a href="https://plus.google.com/116085534841818923812" rel="tooltip" data-placement="top" data-original-title="Jacob van den Berg on G+"target="_blank">Jacob van den Berg</a>,
+						<a href="https://plus.google.com/106108761300658289389" rel="tooltip" data-placement="top" data-original-title="Breno Santos Araújo on G+" target="_blank">Breno Santos Araújo</a> e
+						<a href="https://plus.google.com/101950228743755129233" rel="tooltip" data-placement="top" data-original-title="Leonardo de Barros on G+" target="_blank">Leonardo de Barros</a>
+					</li>        
+					</li>                  
+					<li><b>Com ajuda de:</b> 
+						<a href="https://plus.google.com/u/0/+LucasAzevedoNet/posts" rel="tooltip" data-placement="top" data-original-title="Lucas Azevedo on G+"target="_blank">Lucas Azevedo</a>
+					</li>   
+				</ul>
+				<p>Conheça <a href="https://developers.google.com/groups/directory/Brazil" rel="tooltip" data-placement="top" data-original-title="Outros GDG em Brasil" target="_blank">outros GDGs</a> em Brasil.</p>
+			</div>
+		</footer>
+	</div>
+	<!-- /.container -->
+      <!-- Le javascript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script type="text/javascript" src="./files/js"></script><script src="./files/main.js" type="text/javascript"></script>
+      <script src="./files/jquery-1.8.2.min.js"></script>
+      <script src="./files/bootstrap.min.js"></script>
+      <script>
+      	!function ($) {
+      		$(function(){
+      			
+      			$("img[rel='popover']").popover({
+      				placement: "top",
+      				trigger: "hover"
+      			});
+      			
+             //tooltips
+             $("a[rel='tooltip']").tooltip();
+             
+             // carousel demo
+             //$('#myCarousel').carousel()
+             
+             $('#tabProgramacao a:first').tab('show');
+             
+             $('#tabProgramacao a').click(function (e) {
+             	e.preventDefault();
+             	$(this).tab('show');
+             })
+             
+             
+             
+             
+             
+             
+         })
+      	}(window.jQuery)
+      </script>
+
+      <script>
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      	ga('create', 'UA-40917664-3', 'braraujo.github.io');
+      	ga('send', 'pageview');
+
+      </script>
+  </body>
+  </html>
