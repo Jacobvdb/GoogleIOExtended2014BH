@@ -513,8 +513,8 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
 		<div class="featurette">
 			<h2 class="featurette-heading">Não perca essa oportunidade!</h2>
 <!-- 			<p class="lead">Evento Organizado !</p> -->
-			<a class="btn btn-large btn-danger" href="#inscricao25" role="button" data-toggle="modal">Faça sua inscrição para o dia 25</a>&nbsp;
-			<br><br><a class="btn btn-large btn-danger" href="#inscricao26" role="button" data-toggle="modal">Faça sua inscrição para o dia 26</a>&nbsp;
+			<a id="btn_inscricao25" class="btn btn-large btn-danger" href="#inscricao25" role="button" data-toggle="modal">Faça sua inscrição para o dia 25</a>&nbsp;
+			<br><br><a id="btn_inscricao26" class="btn btn-large btn-danger" href="#inscricao26" role="button" data-toggle="modal">Faça sua inscrição para o dia 26</a>&nbsp;
 
 			<div class="follow" style="margin-top:70px">
 				<h2 class="featurette-heading">Siga-nos</h2>
@@ -587,7 +587,7 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
          </div>
          <div class="modal-footer">
            <a href="#" data-dismiss="modal" class="btn">Fechar</a>
-           <p style="display:inline-block" ><button type="submit" class="btn btn-primary" id="start">Enviar</button><!-- <input id="btnSendContact" type="submit" class="btn btn-primary"/> --></p>
+           <p style="display:inline-block" ><button type="submit" class="btn btn-primary" id="start25">Enviar</button><!-- <input id="btnSendContact" type="submit" class="btn btn-primary"/> --></p>
          </div>
          </form>
         </div>
@@ -629,7 +629,7 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
          </div>
          <div class="modal-footer">
            <a href="#" data-dismiss="modal" class="btn">Fechar</a>
-           <p style="display:inline-block" ><button type="submit" class="btn btn-primary" id="start">Enviar</button><!-- <input id="btnSendContact" type="submit" class="btn btn-primary"/> --></p>
+           <p style="display:inline-block" ><button type="submit" class="btn btn-primary" id="start26">Enviar</button><!-- <input id="btnSendContact" type="submit" class="btn btn-primary"/> --></p>
          </div>
          </form>
         </div>
@@ -726,6 +726,8 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
 		    $("#messageboard").modal("show");
 
 		}
+	 
+	 
       	!function ($) {
       		$(function(){
 
@@ -751,6 +753,7 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
 
       	   $("#inscricao25form").submit(function(e){
      	 	  e.preventDefault();
+     	 	$("#start25").attr("disabled", true)
 
      	      $.ajax({
 
@@ -763,6 +766,8 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
      	        	   obj = JSON.stringify(data);
 
      	    	       $("#inscricao25").modal("hide");
+     	    	      $("#start25").attr("disabled", false)
+     	    	      alert("Obrigado, recebira um e-mail de retorno!")
      	        	   if(data.status != '0'){
 
      	        	      // if (document.documentElement.lang=="pt-BR"){var alertText = 'Ixxx deu um pau aqui, n&atilde;o esquente n&atilde;o j&aacute; ficamos sabendo para arrumar. Tenta de novo um pouco mais pa frente. O n&uacute;mero de contato &eacute;: '}
@@ -786,7 +791,7 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
 
         	   $("#inscricao26form").submit(function(e){
           	 	  e.preventDefault();
-
+          	 	  $("#start26").attr("disabled", true)
           	      $.ajax({
 
           	           //dev dashboard contactform
@@ -796,8 +801,10 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
 
           	           success: function(data){
           	        	   obj = JSON.stringify(data);
-
+          	        	   $("#start26").attr("disabled", false)
           	    	       $("#inscricao26").modal("hide");
+          	        	   alert("Obrigado, recebira um e-mail de retorno!")
+          	    	     
           	        	   if(data.status != '0'){
 
           	        	      // if (document.documentElement.lang=="pt-BR"){var alertText = 'Ixxx deu um pau aqui, n&atilde;o esquente n&atilde;o j&aacute; ficamos sabendo para arrumar. Tenta de novo um pouco mais pa frente. O n&uacute;mero de contato &eacute;: '}
@@ -806,9 +813,10 @@ Vamos entender o processo de desenvolvimento de uma  extensão, indo da definiç
           	        		   console.log('status: ' + obj)
           	        	   } else {
           	        		  console.log('status: ' + obj)
+          	        		  
           	        	       //if (document.documentElement.lang=="pt-BR"){var alertText = 'Obrigado pelo seu interesse! O n&uacute;mero de contato &eacute;:'}
           	        	       //addMessage(alertText + data.ticketid,'success');
-          	        		   //alert(alertText + data.ticketid)
+          	        		   
           	        	       //$("#login-error").show();
 
           	        		   //$("#messageboard").modal("show");
