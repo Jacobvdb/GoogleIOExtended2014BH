@@ -44,8 +44,8 @@
 		    $("#messageboard").modal("show");
 
 		}
-	 
-	 
+
+
       	!function ($) {
       		$(function(){
 
@@ -85,7 +85,7 @@
 
      	    	       $("#inscricao25").modal("hide");
      	    	      $("#start25").attr("disabled", false)
-     	    	      alert("Obrigado, recebira um e-mail de retorno!")
+     	    	      alert("Obrigado! Você receberá um e-mail de retorno.")
      	        	   if(data.status != '0'){
 
      	        	      // if (document.documentElement.lang=="pt-BR"){var alertText = 'Ixxx deu um pau aqui, n&atilde;o esquente n&atilde;o j&aacute; ficamos sabendo para arrumar. Tenta de novo um pouco mais pa frente. O n&uacute;mero de contato &eacute;: '}
@@ -121,8 +121,8 @@
           	        	   obj = JSON.stringify(data);
           	        	   $("#start26").attr("disabled", false)
           	    	       $("#inscricao26").modal("hide");
-          	        	   alert("Obrigado, recebira um e-mail de retorno!")
-          	    	     
+          	        	   alert("Obrigado! Você receberá um e-mail de retorno.")
+
           	        	   if(data.status != '0'){
 
           	        	      // if (document.documentElement.lang=="pt-BR"){var alertText = 'Ixxx deu um pau aqui, n&atilde;o esquente n&atilde;o j&aacute; ficamos sabendo para arrumar. Tenta de novo um pouco mais pa frente. O n&uacute;mero de contato &eacute;: '}
@@ -131,10 +131,10 @@
           	        		   console.log('status: ' + obj)
           	        	   } else {
           	        		  console.log('status: ' + obj)
-          	        		  
+
           	        	       //if (document.documentElement.lang=="pt-BR"){var alertText = 'Obrigado pelo seu interesse! O n&uacute;mero de contato &eacute;:'}
           	        	       //addMessage(alertText + data.ticketid,'success');
-          	        		   
+
           	        	       //$("#login-error").show();
 
           	        		   //$("#messageboard").modal("show");
