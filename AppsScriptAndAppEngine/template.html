@@ -44,7 +44,7 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Google Apps Script</h2>
+      <h2><img src='images/googleAppsScript-icon.png'/>&nbsp;Google Apps Script</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <img src="images/googleAppsScript.png" alt="Google Apps Script" title="Google Apps Script">
@@ -55,7 +55,7 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Google Apps Script</h2>
+      <h2><img src='images/googleAppsScript-icon.png'/>&nbsp;Google Apps Script</h2>
     </hgroup>
     <article>
       <iframe data-src="http://www.youtube.com/embed/JJgmU_JUsug?rel=0"></iframe>
@@ -65,18 +65,18 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Mas cuidado!</h2>
+      <h2><img src='images/cuidado.jpg'/>&nbsp;Mas cuidado!</h2>
     </hgroup>
     <article>
       <p>Você pode acabar tendo problemas se seu projeto:</p>
-      <ul class="build">
+      <ul>
         <li>Manipular um volume MUITO grande de informações</li>
         <li>Exigir processamento muito pesado/longo</li>
         <li>Exigir processamento transacional</li>
         <li>For de complexidade muito alta</li>
       </ul>
       <br/><br/>
-      <p class="build">
+      <p>
         <b>Como tirar proveito da facilidade e simplicidade do Apps Script e, ainda assim, lidar com estes problemas?</b>
       </p>
     </article>
@@ -100,7 +100,7 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Google Cloud Endpoints</h2>
+      <h2><img src='images/endpoints-icon.png'/> &nbsp;Google Cloud Endpoints</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <img src="images/endpoints.png" alt="Endpoints" title="Endpoints">
@@ -110,7 +110,7 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Google Cloud Endpoints - Vantagens</h2>
+      <h2><img src='images/endpoints-icon.png'/> &nbsp;Google Cloud Endpoints - Vantagens</h2>
     </hgroup>
     <article>
       <ul>
@@ -146,14 +146,57 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
       <p><img src='images/ideia.jpg'/>Idéia:</p>
       <ul class="build">
-        <li style='font-size: 40pt'>XxxxApp!</li>
+        <li style='font-size: 40pt'>ServiceApp (Library)</li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <article class="flexbox vcenter">
-      <img src="images/XxxxApp.png" alt="XxxxApp" title="XxxxApp">
+      <img src="images/ServiceApp.png" alt="ServiceApp" title="ServiceApp">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>OAuth2 - Storing tokens</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+
+        function storeTokens(refresh, access) {
+
+          <b>// Use os Properties do usuário para armazenar os tokens.</b>
+          <b>var userProperties = PropertiesService.getUserProperties();</b>
+
+          var tokens = {refreshToken: refresh, accessToken: access};
+          userProperties.setProperties(tokens);
+        }
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>OAuth2 - Calling API</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+
+        function callAPI() {
+          //Busca o token nos properties (busca novo token se expirado)
+          var accessToken = getAccessToken();
+          var options = {method : "GET"}
+
+          <b>//Adiciona o token no header</b>
+          <b>options.headers =  {Authorization: "Bearer " + accessToken};</b>
+
+          var apiURL = "https://bkper-hrd.appspot.com/_ah/api/[API_NAME]/[VERSION]/[PATH]";
+          var responseText = UrlFetchApp.fetch(apiURL, options).getContentText();
+          return responseText;
+        }
+      </pre>
+
+
     </article>
   </slide>
 
@@ -168,6 +211,7 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
     </article>
   </slide>
+
 
   <slide hidden>
     Hidden slides are left out of the presentation.
