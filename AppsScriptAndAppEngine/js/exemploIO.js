@@ -44,7 +44,7 @@
         	        	   obj = JSON.stringify(data);
         	        	   $("#startIO").attr("disabled", false)
         	    	       //$("#inscricao26").modal("hide");
-        	        	   alert("Lançado!")
+        	        	   alert("Lan&ccedil;ado!")
 
         	        	   if(data.status != '0'){
 
