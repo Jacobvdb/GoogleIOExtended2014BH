@@ -69,7 +69,7 @@
 
 
 
-      	   $("#inscricao25form").submit(function(e){
+      	   $("#_inscricao25form").submit(function(e){
      	 	  e.preventDefault();
      	 	$("#start25").attr("disabled", true)
 
@@ -107,9 +107,9 @@
      	       //console.log('status: ' + obj.status)
      	   });
 
-        	   $("#inscricao26form").submit(function(e){
+        	   $("#_inscricao26form").submit(function(e){
           	 	  e.preventDefault();
-          	 	  $("#start26").attr("disabled", true)
+          	 	  //$("#start26").attr("disabled", true)
           	      $.ajax({
 
           	           //dev dashboard contactform
@@ -119,7 +119,7 @@
 
           	           success: function(data){
           	        	   obj = JSON.stringify(data);
-          	        	   $("#start26").attr("disabled", false)
+          	        /	   $("#start26").attr("disabled", false)
           	    	       $("#inscricao26").modal("hide");
           	        	   alert("Obrigado! Você receberá um e-mail de retorno.")
 
