@@ -20,6 +20,8 @@ URL: https://code.google.com/p/io-2012-slides
 
   <link href="../bootstrap/bootstrap.css" rel="stylesheet">
   <link href="../bootstrap/bootstrap-responsive.css" rel="stylesheet">
+  <link rel="stylesheet"href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+
 
   <link rel="stylesheet" media="all" href="theme/css/default.css">
   <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
@@ -122,6 +124,7 @@ URL: https://code.google.com/p/io-2012-slides
         <li>Mesma infraestrutura que o Google utiliza em suas API's</li>
         <li>Autenticação via OAuth2</li>
         <li>Versionamento da API</li>
+        <li>Geração de código para clientes</li>
         <li>REST Console</li>
       </ul>
     </article>
@@ -151,7 +154,7 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
       <p><img src='images/ideia.jpg'/>Idéia:</p>
       <ul class="build">
-        <li style='font-size: 40pt'>ServiceApp (Library)</li>
+        <li> <span  style='font-size: 35pt'>XxxxxApp</span> (assim como MailApp, SpreadsheetApp, DocumentsApp etc)</li>
       </ul>
     </article>
   </slide>
@@ -164,14 +167,14 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>OAuth2 - Storing tokens</h2>
+      <h2><img src='images/oauth2.png'/> &nbsp;OAuth2 - Storing tokens</h2>
     </hgroup>
     <article>
       <pre class="prettyprint" data-lang="javascript">
 
         function storeTokens(refresh, access) {
 
-          <b>// Use os Properties do usuário para armazenar os tokens.</b>
+          <b>// Use UserProperties to safely store tokens</b>
           <b>var userProperties = PropertiesService.getUserProperties();</b>
 
           var tokens = {refreshToken: refresh, accessToken: access};
@@ -182,20 +185,21 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>OAuth2 - Calling API</h2>
+      <h2><img src='images/oauth2.png'/> &nbsp;OAuth2 - Calling API</h2>
     </hgroup>
     <article>
       <pre class="prettyprint" data-lang="javascript">
 
         function callAPI() {
-          //Busca o token nos properties (busca novo token se expirado)
+          //Gets token from UserProperties,
+          //exchanging the refresh token by a fresh access token, if expired
           var accessToken = getAccessToken();
-          var options = {method : "GET"}
+          var options = {method : "[ GET | POST | PUT | DELETE ]"}
 
-          <b>//Adiciona o token no header</b>
+          <b>//Add access token to request header</b>
           <b>options.headers =  {Authorization: "Bearer " + accessToken};</b>
 
-          var apiURL = "https://bkper-hrd.appspot.com/_ah/api/[API_NAME]/[VERSION]/[PATH]";
+          var apiURL = "https://[APP_ID].appspot.com/_ah/api/[API_NAME]/[VERSION]/[PATH]";
           var responseText = UrlFetchApp.fetch(apiURL, options).getContentText();
           return responseText;
         }
@@ -205,6 +209,13 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/logo_bkper_128x128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Case: bkper</h2>
+      <h3>HUB/Backbone contábil e financeiro para Google Apps</h3>
+    </hgroup>
+  </slide>
 
 
   <slide>
