@@ -25,50 +25,69 @@
   		 	 };
   		 	 
   		 	 
-!function ($) {
-  		$(function(){
+//!function ($) {
+//  		$(function(){
   	
-  			
+/**
+* jQuery initialization
+*/
+$(document).ready(function() {		
   		 	 
-  			$("#googleioform").submit(function(e){
-        	 	  e.preventDefault();
-        	 	  $("#startIO").attr("disabled", true)
-        	      $.ajax({
+  	$("#googleioform").submit(function(e){
+       e.preventDefault();
+       console.log($(this).serializeObject())
+       $("#startIO").attr("disabled", true)
+       $.ajax({
+       //dev dashboard contactform
+          url: "https://script.google.com/macros/s/AKfycbxvyojDfHaT0dTvSJVCzJS2e4CrKstkrw62FVWRBbHrdBZ9sw/exec",
+          type: "POST",
+          data: $(this).serializeObject(),
 
-        	           //dev dashboard contactform
-        	           url: "https://script.google.com/macros/s/AKfycbxvyojDfHaT0dTvSJVCzJS2e4CrKstkrw62FVWRBbHrdBZ9sw/exec",
-        	           type: "POST",
-        	           data: $(this).serializeObject(),
+          success: function(data){
+            obj = JSON.stringify(data);
+            $("#startIO").attr("disabled", false)
+            alert("Lan&ccedil;ado!")
 
-        	           success: function(data){
-        	        	   obj = JSON.stringify(data);
-        	        	   $("#startIO").attr("disabled", false)
-        	    	       //$("#inscricao26").modal("hide");
-        	        	   alert("Lan&ccedil;ado!")
+            if(data.status != '0'){
+              console.log('status: ' + obj)
+            } else {
+              console.log('status: ' + obj)
+            }
+         }
+      });
+    });
+  	
+  	
+  	
+  	$.ajax({
+        //dev googleio list colaborators
+           url: "https://script.google.com/macros/s/AKfycbzTKBktRFmaz3s30DNCjMMJglCif0n0xYSdEW_3PHnNDp9dmDQ/exec",
+           type: "GET",
+           data: "" ,
 
-        	        	   if(data.status != '0'){
+           success: function(data){
+             objw = JSON.stringify(data);
+             //$("#startIO").attr("disabled", false)
+             //alert("fui")
 
-        	        	      // if (document.documentElement.lang=="pt-BR"){var alertText = 'Ixxx deu um pau aqui, n&atilde;o esquente n&atilde;o j&aacute; ficamos sabendo para arrumar. Tenta de novo um pouco mais pa frente. O n&uacute;mero de contato &eacute;: '}
-        	        	       //alert(alertText + data.ticketid)
-        	        	       //addMessage(alertText + data.ticketid,'warning' );
-        	        		   console.log('status: ' + obj)
-        	        	   } else {
-        	        		  console.log('status: ' + obj)
+             if(objw.status != '0'){
+            	 var $select = $('#colaborator');
+            	 $select.find('option').remove();  
+            	 $.each(data,function(key, value) 
+            	 {
+            		 if (key != 'status'){
+            			$select.append('<option value=' + key.replace(/\s/g, '') + '>' + value + '</option>');
+            		 }
+            	 });
+            	 
+               console.log('status: ' + objw)
+             } else {
+               console.log('Somthing went wrong: ' )
+             }
+          }
+       });
 
-        	        	       //if (document.documentElement.lang=="pt-BR"){var alertText = 'Obrigado pelo seu interesse! O n&uacute;mero de contato &eacute;:'}
-        	        	       //addMessage(alertText + data.ticketid,'success');
+  	
 
-        	        	       //$("#login-error").show();
-
-        	        		   //$("#messageboard").modal("show");
-        	        	   }
-        	           }
-        	       });
-        	       //$("#contact").modal("hide");
-        	       //console.log('status: ' + obj.status)
-        	   });
-
-  			
-        })
-  	}(window.jQuery)
-  		
+});		
+  		  		
