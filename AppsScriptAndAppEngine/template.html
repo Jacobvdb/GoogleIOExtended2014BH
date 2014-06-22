@@ -162,6 +162,9 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   <slide>
+    <hgroup>
+      <h2>ServiceXxxApp</h2>
+    </hgroup>
     <article class="flexbox vcenter">
       <img src="images/ServiceApp.png" alt="ServiceApp" title="ServiceApp">
     </article>
@@ -261,7 +264,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Exemplos</h2>
     </hgroup>
     <br/>
-    <p>           
+    <p>
       <a href='https://www.bkper.com/#transactions:ledgerId=agtzfmJrcGVyLWhyZHITCxIGTGVkZ2VyGICAgODTgOgJDA'>Plano de exemplo</a>
     </p>
     <br/>
@@ -286,40 +289,76 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
-<slide>
+  <slide>
+    <hgroup>
+      <h2>BkperApp</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <object data='images/BkperApp.svg' alt="BkperApp" title="BkperApp" height="500px"></object>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Addons</h2>
+    </hgroup>
+    <br/>
+    <p>
+      <a href='https://docs.google.com/a/nimbustecnologia.com.br/document/d/1NVXI-tJE61W-Pv7ND71TbIRjWUDg1hr6jIt0hoXucvg/edit'>Documents Addon</a>
+    </p>
+    <br/>
+    <br/>
+    <p>
+      <a href='https://docs.google.com/a/nimbustecnologia.com.br/spreadsheets/d/1KNVAWJkl_P4U9KTa0_EBH2Sist_Va7WHZJ3c0IxHrlQ/edit#gid=0'>Spreadsheets Addon</a>
+    </p>
+    <br/>
+    <br/>
+
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/desenv_sob_medida.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Biblioteca pública</h2>
+      <h3>Sua biblioteca pode ser utilizada por terceiros</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
     <hgroup>
       <h2> Exemplo </h2>
-       <h3>Cadastrar uma transação com a libraria para Google Apps Script.</h3>
+       <h3>Fazer um lançamento com o BkperApp.</h3>
     </hgroup>
     <article>
       <pre class="prettyprint" data-lang="Apps Script" style="font-size:0.8em">
 
-     function recordATransaction() {
-      
-        var ledger = BkperApp.openLedgerById("agtzfmJrcGVyLWhyZHIOCxIGTGVkZ2VyGNKJAgw");
-        
-        ledger.record("#gas 63.23");
-        
-      }
-    
-           </pre>
+       function recordATransaction() {
+
+          var ledgerId = "agtzfmJrcGVyLWhyZHIOCxIGTGVkZ2VyGNKJAgw";
+
+          <b>var ledger = BkperApp.openLedgerById(ledgerId);</b>
+
+          <b>ledger.record("#gas 63.23");</b>
+
+        }
+
+     </pre>
     </article>
-    
-    <a href="http://about.bkper.com/api_appsScript.html" style="text-decoration:none">Online exemple</a> 
+
+    <a href="http://about.bkper.com/api_appsScript.html" style="text-decoration:none">Online example</a>
   </slide>
 
 
 
  <slide>
   <hgroup>
-      <h2>Case</h2>
-      <h3>Integração de todos componentes</h3>
+      <h2>Integração de todos componentes</h2>
       <ul class="build">
         <li> <strong>Front End</strong> seu design favorito.</li>
         <li> <strong>Google Apps Script</strong> sua logica de negocio.</li>
         <li> <strong>Google Cloud Platform</strong> sua estabilidade & escalabilidade.</li>
-      
-     
+
+
      <li style="margin-top:30px;"><strong>Exemplo: </strong>
      <div class="modal-body">
 
@@ -340,7 +379,7 @@ URL: https://code.google.com/p/io-2012-slides
 <!--                <input type="text" class="form-control" name="colaborator" id="colaborator" placeholder=""> -->
                <select id="colaborator" name="colaborator" >
                 <option>...</option>
-                
+
                </select>
           </div><br>
           <div class="modal-footer" style="width:400px;">
@@ -351,6 +390,17 @@ URL: https://code.google.com/p/io-2012-slides
       </div></li>
    </ul>
     </hgroup>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/gdg_bh_02.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Obrigado!&gt;</h2>
+      <p>Dúvidas?</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
   </slide>
 
   <slide class="backdrop"></slide>
