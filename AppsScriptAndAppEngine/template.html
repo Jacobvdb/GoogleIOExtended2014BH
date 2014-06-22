@@ -261,7 +261,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Exemplos</h2>
     </hgroup>
     <br/>
-    <p>
+    <p>           
       <a href='https://www.bkper.com/#transactions:ledgerId=agtzfmJrcGVyLWhyZHITCxIGTGVkZ2VyGICAgODTgOgJDA'>Plano de exemplo</a>
     </p>
     <br/>
@@ -284,6 +284,28 @@ URL: https://code.google.com/p/io-2012-slides
     <article>
       <iframe data-src="https://apis-explorer.appspot.com/apis-explorer/?base=https%3A%2F%2Fbkper-hrd.appspot.com%2F_ah%2Fapi#p/bkper/v2/"></iframe>
     </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2> Exemplo </h2>
+       <h3>Cadastrar uma transação com a libraria para Google Apps Script.</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Apps Script" style="font-size:0.8em">
+
+     function recordATransaction() {
+      
+        var ledger = BkperApp.openLedgerById("agtzfmJrcGVyLWhyZHIOCxIGTGVkZ2VyGNKJAgw");
+        
+        ledger.record("#gas 63.23");
+        
+      }
+    
+           </pre>
+    </article>
+    
+    <a href="http://about.bkper.com/api_appsScript.html" style="text-decoration:none">Online exemple</a> 
   </slide>
 
 
