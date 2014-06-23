@@ -119,7 +119,7 @@
 
           	           success: function(data){
           	        	   obj = JSON.stringify(data);
-          	        /	   $("#start26").attr("disabled", false)
+          	        	   $("#start26").attr("disabled", false)
           	    	       $("#inscricao26").modal("hide");
           	        	   alert("Obrigado! Você receberá um e-mail de retorno.")
 
