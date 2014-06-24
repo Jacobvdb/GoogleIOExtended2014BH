@@ -26,7 +26,7 @@ var SLIDE_CONFIG = {
     www: 'http://about.bkper.com/',
     github: 'https://github.com/maelcaldas'
   }, {
-    name: 'Jacob Van Den Berg',
+    name: 'Jacob van den Berg',
     company: 'Lagaroo',
     gplus: 'https://plus.google.com/+JacobvandenBerg',
     twitter: '@infolagaroo',
